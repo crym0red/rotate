@@ -1,0 +1,27 @@
+name: Build MRzefvRotate.dylib
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ldid
+        run: brew install ldid
+
+      - name: Build dylib
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: MRzefvRotate-dylib
+          path: build/MRzefvRotate.dylib
+          if-no-files-found: error
