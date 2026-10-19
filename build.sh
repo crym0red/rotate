@@ -27,7 +27,7 @@ build() {
     -Wno-implicit-function-declaration \
     -Wno-incompatible-pointer-types \
     -Wno-int-conversion \
-    -framework UIKit -framework Foundation \
+    -framework UIKit -framework Foundation -framework CoreGraphics \
     -install_name "@rpath/$NAME.dylib" \
     "${SOURCES[@]}"
 }
